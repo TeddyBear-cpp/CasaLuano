@@ -38,3 +38,5 @@ Lighthouse 13.6.0 ran in headless Chrome 156 against `http://127.0.0.1:8765/` on
 The local Python server does not model a production host's Brotli compression, CDN caching, or edge latency. Those need a follow-up check after the GitHub-based deployment target is chosen.
 
 The concept intentionally includes `noindex`, so Lighthouse SEO stayed at **63**. The site should remain unindexed until the café approves public use. Prices, hours, and preferred booking details still need confirmation, and the three supplied food photos remain low resolution.
+
+After this audit, a 0.20 MB JPEG and static Open Graph metadata were added for messaging previews. The current build is 5.80 MB. The Lighthouse results above describe the audited build; the sharing metadata was not separately remeasured.

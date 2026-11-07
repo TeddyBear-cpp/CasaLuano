@@ -26,3 +26,5 @@ Desktop home: performance **93**, LCP **1.26 s**, accessibility **100**, best pr
 The build includes pinned Lenis 1.3.27, bundled locally through esbuild. Scroll smoothing applies to wheel input and section links; touch scrolling remains native. The site uses native scrolling when a visitor requests reduced motion. All 31 images have explicit dimensions, all local links resolve, and the checked pages logged no browser errors. The autoplaying home film remains muted with a pause control; it stops when off-screen.
 
 The SEO score remains 63 because this independent concept deliberately blocks indexing. Remove `noindex` only when Casa Luano approves an official public launch. The three food snapshots are still only 130 pixels wide in the supplied material, so replacing those with higher-resolution photos is the main remaining visual improvement.
+
+Post-audit update: a 0.20 MB JPEG and static Open Graph metadata were added for messaging previews. The current build is 5.80 MB; the Lighthouse scores above were measured before that addition.

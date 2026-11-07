@@ -2,6 +2,8 @@ from pathlib import Path
 from html import escape
 
 ROOT = Path(__file__).parent / "dist"
+SITE_URL = "https://teddybear-cpp.github.io/CasaLuano/"
+SHARE_IMAGE_URL = SITE_URL + "assets/share-preview.jpg"
 
 ARROW = '''<svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>'''
 FLOWER = '''<svg class="brand-flower" viewBox="0 0 80 80" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="2.2" stroke-linecap="round">''' + ''.join(f'<ellipse cx="40" cy="17" rx="5.5" ry="13" transform="rotate({i*30} 40 40)"/>' for i in range(12)) + '''<circle cx="40" cy="40" r="12" fill="currentColor"/><path d="M39 51c3 10 2 18 0 27M40 66c-10-1-15-6-17-12 9 0 14 4 17 12Zm0 5c8-7 13-7 18-7-4 6-10 9-18 7Z"/></g></svg>'''
@@ -52,10 +54,23 @@ def info_band(title, copy, action, href="https://www.instagram.com/casaluano/"):
 
 
 def base(page, title, description, body):
+    page_url = SITE_URL if page == "home" else SITE_URL + page + ".html"
+    share_title = "Casa Luano — A little clay, a lot of joy" if page == "home" else f"{title} · Casa Luano"
+    share_description = ("An independent website concept showing pottery painting, wheel workshops, food and good company at Casa Luano in Lusaka."
+                         if page == "home" else f"{description} Independent concept preview.")
     html = f'''<!doctype html><html lang="en" class="js"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f8f3e9"><meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f8f3e9"><meta name="robots" content="noindex">
 <meta name="description" content="{escape(description, quote=True)}"><title>{escape(title)} · Casa Luano</title>
+<link rel="canonical" href="{page_url}">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Casa Luano by Wildflower">
+<meta property="og:url" content="{page_url}"><meta property="og:title" content="{escape(share_title, quote=True)}">
+<meta property="og:description" content="{escape(share_description, quote=True)}">
+<meta property="og:image" content="{SHARE_IMAGE_URL}"><meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1440"><meta property="og:image:height" content="960">
+<meta property="og:image:alt" content="Handmade black and white checkerboard ceramic tea set against a bright green backdrop">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(share_title, quote=True)}">
+<meta name="twitter:description" content="{escape(share_description, quote=True)}"><meta name="twitter:image" content="{SHARE_IMAGE_URL}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><script src="site.js" defer></script>
 </head><body>{header(page)}<main id="content">{body}</main>{footer()}</body></html>'''
