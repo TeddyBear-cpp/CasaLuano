@@ -4,7 +4,7 @@
   "private": true,
   "description": "Independent Casa Luano clay café website concept",
   "scripts": {
-    "build": "python build.py && node scripts/build-assets.mjs",
+    "build": "python build.py && node scripts/build-assets.mjs && node scripts/publish-root.mjs",
     "preview": "python -m http.server 8765 --directory dist"
   },
   "dependencies": {
