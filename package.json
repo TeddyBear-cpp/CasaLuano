@@ -1,0 +1,16 @@
+{
+  "name": "casa-luano-concept-preview",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Independent Casa Luano clay café website concept",
+  "scripts": {
+    "build": "python build.py && node scripts/build-assets.mjs",
+    "preview": "python -m http.server 8765 --directory dist"
+  },
+  "dependencies": {
+    "lenis": "1.3.27"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}
